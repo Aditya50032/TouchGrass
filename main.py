@@ -8,7 +8,7 @@ from fastapi.staticfiles import StaticFiles
 
 from backend import config, database, xp
 from backend.demo import DEMO_DISCOVERY
-from backend.ollama import AnalysisError, NotNatureImage, OllamaUnavailable, analyze_image, check_ollama
+from backend.ollama import AnalysisError, OllamaUnavailable, analyze_image, check_ollama
 
 app = FastAPI(title="TrailLens", version="1.0.0")
 config.ensure_dirs()
