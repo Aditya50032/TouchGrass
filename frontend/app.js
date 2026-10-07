@@ -120,9 +120,25 @@ analyzeBtn.addEventListener("click", async () => {
         ? "Demo result generated. Full Local AI runs with Ollama + Qwen3-VL 2B on your computer."
         : "Photo analyzed successfully.";
   } catch (error) {
-    statusEl.textContent = error.message || "Could not upload the photo.";
+    const status = error && error.status;
+    statusEl.classList.add("error");
+
+    if (status === 422) {
+      statusEl.textContent =
+        "🌿 Not related to the environment. " +
+        (error.message || "Please point the camera at a natural subject.");
+    } else if (status === 503) {
+      statusEl.textContent =
+        "Local AI is unavailable. Start Ollama on the computer running TrailLens.";
+    } else {
+      statusEl.textContent =
+        (error && error.message) || "Could not upload or analyze the photo.";
+    }
   } finally {
-    analyzeBtn.disabled = false;
+    statusEl.classList.remove("error");
+    if (statusEl.textContent.startsWith("🌿")) {
+      statusEl.classList.add("error");
+    }
   }
 });
 
