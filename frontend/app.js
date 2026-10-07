@@ -58,6 +58,25 @@ function showPhoto(file) {
   resultPanel.classList.add("hidden");
 }
 
+function showPhoto(file) {
+  if (!file) return;
+
+  if (file.type && !file.type.startsWith("image/")) {
+    statusEl.textContent = "Please choose an image.";
+    photoInput.value = "";
+    analyzeBtn.disabled = true;
+    return;
+  }
+
+  const objectUrl = URL.createObjectURL(file);
+  preview.onload = () => URL.revokeObjectURL(objectUrl);
+  preview.src = objectUrl;
+  previewWrap.classList.remove("hidden");
+  analyzeBtn.disabled = false;
+  statusEl.textContent = "Photo ready. Click Analyze Discovery.";
+  resultPanel.classList.add("hidden");
+}
+
 photoInput.addEventListener("change", () => {
   showPhoto(photoInput.files?.[0]);
 });
