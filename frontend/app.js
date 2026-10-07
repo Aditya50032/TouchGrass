@@ -93,6 +93,7 @@ analyzeBtn.addEventListener("click", async () => {
   }
 
   analyzeBtn.disabled = true;
+  statusEl.classList.remove("error");
   statusEl.textContent =
     "Uploading your photo and looking closely at your discovery…";
   resultPanel.classList.add("hidden");
@@ -115,6 +116,7 @@ analyzeBtn.addEventListener("click", async () => {
     renderResult(data);
     resultPanel.classList.remove("hidden");
     resultPanel.scrollIntoView({ behavior: "smooth" });
+    statusEl.classList.remove("error");
     statusEl.textContent =
       data.mode === "demo"
         ? "Demo result generated. Full Local AI runs with Ollama + Qwen3-VL 2B on your computer."
@@ -135,10 +137,7 @@ analyzeBtn.addEventListener("click", async () => {
         (error && error.message) || "Could not upload or analyze the photo.";
     }
   } finally {
-    statusEl.classList.remove("error");
-    if (statusEl.textContent.startsWith("🌿")) {
-      statusEl.classList.add("error");
-    }
+    analyzeBtn.disabled = false;
   }
 });
 
