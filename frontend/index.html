@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TrailLens — Offline AI Nature Explorer</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="/">🌿 <span>TrailLens</span></a>
+<nav><a class="active" href="/">Explore</a><a href="/journal">Journal</a><span id="stats-pill" class="stats-pill">★ 0 XP · Lv 1</span></nav>
+</header>
+<main>
+<section class="hero">
+<div class="hero-copy"><span class="eyebrow">HACKTOBERFEST · TOUCH GRASS</span>
+<h1>Step outside.<br><span>Meet your wild neighbours.</span></h1>
+<p>Photograph a tree, flower, bird, bug, leaf or rock. TrailLens identifies it with a local open-weight vision model, teaches you three facts, and gives you a reason to keep exploring.</p>
+<div class="hero-actions"><button id="start-btn" class="primary">Start Exploring</button><a class="secondary" href="/journal">Open Journal</a></div>
+<div id="mode-banner" class="mode-banner">Checking AI mode…</div></div>
+<div class="hero-art" aria-hidden="true"><div class="leaf-orb">🌱</div><div class="trail-card">📷 Snap a photo<br>🧠 Local AI analysis<br>⚡ Earn XP</div></div>
+</section>
+<section id="explore" class="explore-grid">
+<div class="panel upload-panel"><div class="section-kicker">01 · DISCOVER</div><h2>Show me what you found.</h2><p class="muted">Take a photo outside or upload one from your device.</p>
+<label class="dropzone" for="photo"><div class="drop-icon">📸</div><strong>Choose a nature photo</strong><span>JPG, PNG or WEBP · up to 10 MB</span></label>
+<input id="photo" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden>
+<div id="preview-wrap" class="preview-wrap hidden"><img id="preview" alt="Selected nature photo"></div>
+<button id="analyze-btn" class="primary full" disabled>Analyze Discovery</button><p id="status" class="status" role="status"></p>
+</div>
+<div id="result-panel" class="panel result-panel hidden"><div class="section-kicker">02 · EXPLORE</div><div id="result-content"></div>
+<div class="result-actions"><button id="save-btn" class="primary">Save Discovery</button><button id="again-btn" class="secondary">Explore Again</button></div></div>
+</section>
+<section class="steps"><div><b>1</b><span>Start exploring</span></div><div><b>2</b><span>Take a photo</span></div><div><b>3</b><span>AI identifies it</span></div><div><b>4</b><span>Take the challenge</span></div><div><b>5</b><span>Save the memory</span></div></section>
+</main>
+<script src="/static/app.js"></script>
+</body></html>
