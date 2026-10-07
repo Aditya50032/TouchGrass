@@ -37,8 +37,9 @@ async def health():
 @app.post("/api/analyze")
 async def analyze(file: UploadFile = File(...)):
     suffix = Path(file.filename or "photo.jpg").suffix.lower()
-    if suffix not in config.ALLOWED_EXTENSIONS:
-        raise HTTPException(status_code=400, detail="Unsupported file type. Use JPG, JPEG, PNG, or WEBP.")
+    content_type = (file.content_type or "").lower()
+    if suffix not in config.ALLOWED_EXTENSIONS and not content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="Please upload an image file.")
 
     contents = await file.read()
     if not contents:
