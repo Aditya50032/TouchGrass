@@ -21,8 +21,8 @@
 </section>
 <section id="explore" class="explore-grid">
 <div class="panel upload-panel"><div class="section-kicker">01 · DISCOVER</div><h2>Show me what you found.</h2><p class="muted">Take a photo outside or upload one from your device.</p>
-<label class="dropzone" for="photo"><div class="drop-icon">📸</div><strong>Choose a nature photo</strong><span>JPG, PNG or WEBP · up to 10 MB</span></label>
-<input id="photo" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" hidden>
+<label class="dropzone" for="photo"><div class="drop-icon">📸</div><strong>Choose a nature photo</strong><span>Camera or gallery · any common image format · up to 10 MB</span></label>
+<input id="photo" type="file" accept="image/*" capture="environment" hidden>
 <div id="preview-wrap" class="preview-wrap hidden"><img id="preview" alt="Selected nature photo"></div>
 <button id="analyze-btn" class="primary full" disabled>Analyze Discovery</button><p id="status" class="status" role="status"></p>
 </div>
