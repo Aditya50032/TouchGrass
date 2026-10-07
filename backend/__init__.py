@@ -1,1 +1,1 @@
-TrailLens backend package.'''\n
+"""TrailLens backend package."""
