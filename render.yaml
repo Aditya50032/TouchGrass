@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: traillens
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
+      - key: OLLAMA_MODEL
+        value: "qwen3-vl:2b"
